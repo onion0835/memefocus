@@ -9,8 +9,8 @@ MemeFocus is a static website for publishing AI culture, developer humor, prompt
 Use the default static-site setup:
 
 - Framework preset: None
-- Build command: leave empty
-- Build output directory: `/`
+- Build command: `exit 0`
+- Build output directory: `/` (repository root)
 - Root directory: leave empty
 
 After connecting the GitHub repository, every push to `main` can trigger a new Pages deployment.
