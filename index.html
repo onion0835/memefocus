@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>MemeFocus - AI & Developer Memes</title>
+    <meta
+      name="description"
+      content="MemeFocus is a curated hub for AI and developer memes, prompt culture, debugging humor, and software team inside jokes."
+    >
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://memefocus.com/">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="MemeFocus - AI & Developer Memes">
+    <meta
+      property="og:description"
+      content="The curated hub for AI and developer memes, prompt culture, and debugging humor."
+    >
+    <meta property="og:url" content="https://memefocus.com/">
+    <meta property="og:image" content="https://memefocus.com/assets/hero.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="MemeFocus - AI & Developer Memes">
+    <meta
+      name="twitter:description"
+      content="The curated hub for AI and developer memes, prompt culture, and debugging humor."
+    >
+    <meta name="twitter:image" content="https://memefocus.com/assets/hero.png">
+    <link rel="preload" href="assets/hero.png" as="image">
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="brand" href="/" aria-label="MemeFocus home">
+        <span class="brand-mark" aria-hidden="true">MF</span>
+        <span>MemeFocus</span>
+      </a>
+      <nav class="header-nav" aria-label="Primary navigation">
+        <a href="#browse">Browse</a>
+        <a href="#collections">Collections</a>
+        <a href="https://github.com/onion0835/memefocus">GitHub</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero" aria-labelledby="hero-title">
+        <div class="hero-content">
+          <p class="eyebrow">AI culture, developer humor, and sharp little software truths</p>
+          <h1 id="hero-title">MemeFocus</h1>
+          <p class="hero-copy">
+            A curated hub for the jokes, patterns, and tiny breakdowns that make building software feel human.
+          </p>
+          <form class="hero-search" role="search" aria-label="Search memes">
+            <label class="sr-only" for="hero-search-input">Search MemeFocus</label>
+            <input id="hero-search-input" name="q" type="search" placeholder="Search AI, debugging, product, prompts">
+            <button type="submit">Search</button>
+          </form>
+        </div>
+      </section>
+
+      <section class="browse-section" id="browse" aria-labelledby="browse-title">
+        <div class="section-inner">
+          <div class="section-heading">
+            <div>
+              <p class="eyebrow">Fresh picks</p>
+              <h2 id="browse-title">Browse the feed</h2>
+            </div>
+            <p>
+              Filter the first collection by topic. These cards are ready to replace with real posts as the archive grows.
+            </p>
+          </div>
+
+          <div class="toolbar" aria-label="Browse controls">
+            <div class="segment-control" id="categoryFilters" aria-label="Filter by category"></div>
+            <label class="feed-search">
+              <span class="sr-only">Filter visible cards</span>
+              <input id="feedSearch" type="search" placeholder="Filter cards">
+            </label>
+          </div>
+
+          <div class="meme-grid" id="memeGrid" aria-live="polite"></div>
+          <p class="empty-state" id="emptyState" hidden>No matches yet. Try a broader search.</p>
+        </div>
+      </section>
+
+      <section class="collections-section" id="collections" aria-labelledby="collections-title">
+        <div class="section-inner">
+          <div class="section-heading">
+            <div>
+              <p class="eyebrow">Collections</p>
+              <h2 id="collections-title">Built for fast scanning</h2>
+            </div>
+            <p>
+              Use these buckets for future landing pages, newsletters, or social posts once MemeFocus starts publishing daily.
+            </p>
+          </div>
+
+          <div class="collection-grid">
+            <article class="collection-item">
+              <span class="collection-code">AI</span>
+              <h3>Model Moments</h3>
+              <p>Prompt rituals, hallucination jokes, evaluation pain, and agent workflow observations.</p>
+            </article>
+            <article class="collection-item">
+              <span class="collection-code">DEV</span>
+              <h3>Build Breaks</h3>
+              <p>Pull requests, local environments, deployments, and the classic one-line fix.</p>
+            </article>
+            <article class="collection-item">
+              <span class="collection-code">OPS</span>
+              <h3>Ship Room</h3>
+              <p>Product decisions, launch nerves, monitoring dashboards, and team-process humor.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <span>MemeFocus</span>
+      <a href="https://github.com/onion0835/memefocus">GitHub</a>
+      <span>memefocus.com</span>
+    </footer>
+
+    <script src="script.js" defer></script>
+  </body>
+</html>

@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://memefocus.com/sitemap.xml
