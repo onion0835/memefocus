@@ -3,124 +3,235 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>MemeFocus - AI & Developer Memes</title>
-    <meta
-      name="description"
-      content="MemeFocus is a curated hub for AI and developer memes, prompt culture, debugging humor, and software team inside jokes."
-    >
-    <meta name="robots" content="index, follow">
+    <title>MemeFocus | AI and Developer Memes Curated Daily Online</title>
+    <meta name="description" content="Discover curated Claude, Cursor, vibe coding, and AI coding memes for developers. Fast pages, sharp picks, and a weekly digest coming soon online.">
     <link rel="canonical" href="https://memefocus.com/">
     <meta property="og:type" content="website">
-    <meta property="og:title" content="MemeFocus - AI & Developer Memes">
-    <meta
-      property="og:description"
-      content="The curated hub for AI and developer memes, prompt culture, and debugging humor."
-    >
+    <meta property="og:title" content="MemeFocus | AI and Developer Memes Curated Daily Online">
+    <meta property="og:description" content="Discover curated Claude, Cursor, vibe coding, and AI coding memes for developers. Fast pages, sharp picks, and a weekly digest coming soon online.">
     <meta property="og:url" content="https://memefocus.com/">
-    <meta property="og:image" content="https://memefocus.com/assets/hero.png">
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="MemeFocus - AI & Developer Memes">
-    <meta
-      name="twitter:description"
-      content="The curated hub for AI and developer memes, prompt culture, and debugging humor."
-    >
-    <meta name="twitter:image" content="https://memefocus.com/assets/hero.png">
-    <link rel="preload" href="assets/hero.png" as="image">
-    <link rel="stylesheet" href="styles.css">
+    <meta property="og:image" content="https://memefocus.com/assets/logo.svg">
+    <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script defer src="data/embed-database.js"></script>
+    <script defer src="assets/feed.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <link rel="stylesheet" href="assets/styles.css">
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "Organization",
+            "@id": "https://memefocus.com/#organization",
+            "name": "MemeFocus",
+            "url": "https://memefocus.com/",
+            "logo": "https://memefocus.com/assets/logo.svg",
+            "sameAs": ["https://github.com/onion0835/memefocus"]
+          },
+          {
+            "@type": "WebSite",
+            "@id": "https://memefocus.com/#website",
+            "url": "https://memefocus.com/",
+            "name": "MemeFocus",
+            "description": "The Curated Hub for AI & Developer Memes",
+            "publisher": {"@id": "https://memefocus.com/#organization"}
+          },
+          {
+            "@type": "BreadcrumbList",
+            "@id": "https://memefocus.com/#breadcrumb",
+            "itemListElement": [
+              {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://memefocus.com/"}
+            ]
+          }
+        ]
+      }
+    </script>
   </head>
-  <body>
-    <header class="site-header">
-      <a class="brand" href="/" aria-label="MemeFocus home">
-        <span class="brand-mark" aria-hidden="true">MF</span>
-        <span>MemeFocus</span>
-      </a>
-      <nav class="header-nav" aria-label="Primary navigation">
-        <a href="#browse">Browse</a>
-        <a href="#collections">Collections</a>
-        <a href="https://github.com/onion0835/memefocus">GitHub</a>
-      </nav>
+  <body class="min-h-screen bg-[#0b0f19] text-white antialiased">
+    <header class="border-b border-white/10">
+      <div class="mf-shell flex flex-wrap items-center justify-between gap-4 py-5">
+        <a href="index.html" class="flex items-center gap-3 font-bold" aria-label="MemeFocus home">
+          <img src="assets/logo.svg" width="150" height="40" alt="MemeFocus">
+        </a>
+        <nav class="flex flex-wrap items-center gap-4 text-sm text-slate-300" aria-label="Primary navigation">
+          <a class="hover:text-white" href="memes/claude/">Claude</a>
+          <a class="hover:text-white" href="memes/claude-code/">Claude Code</a>
+          <a class="hover:text-white" href="memes/vibe-coding/">Vibe Coding</a>
+          <a class="hover:text-white" href="memes/ai-coding/">AI Coding</a>
+          <a class="hover:text-white" href="blog/what-is-vibe-coding/">Blog</a>
+        </nav>
+      </div>
     </header>
 
     <main>
-      <section class="hero" aria-labelledby="hero-title">
-        <div class="hero-content">
-          <p class="eyebrow">AI culture, developer humor, and sharp little software truths</p>
-          <h1 id="hero-title">MemeFocus</h1>
-          <p class="hero-copy">
-            A curated hub for the jokes, patterns, and tiny breakdowns that make building software feel human.
+      <section class="mf-shell grid gap-12 py-20 lg:grid-cols-[1.08fr_0.92fr] lg:items-center">
+        <div>
+          <p class="mb-4 text-sm font-bold uppercase text-violet-300">The Curated Hub for AI & Developer Memes</p>
+          <h1 class="max-w-4xl text-5xl font-black leading-tight md:text-7xl">AI & Developer Memes, Curated Daily</h1>
+          <p class="mt-6 max-w-2xl text-lg leading-8 text-slate-300">
+            The best Claude, Cursor, Vibe Coding and AI Coding memes from across the internet.
           </p>
-          <form class="hero-search" role="search" aria-label="Search memes">
-            <label class="sr-only" for="hero-search-input">Search MemeFocus</label>
-            <input id="hero-search-input" name="q" type="search" placeholder="Search AI, debugging, product, prompts">
-            <button type="submit">Search</button>
-          </form>
+          <div class="mt-8 flex flex-wrap gap-3">
+            <a class="mf-button" href="memes/claude/">Explore Claude Memes</a>
+            <a class="mf-button mf-button-secondary" href="blog/what-is-vibe-coding/">What is vibe coding?</a>
+          </div>
+        </div>
+        <div class="mf-card p-5">
+          <div class="grid gap-3">
+            <div class="rounded-lg border border-white/10 bg-black/30 p-5">
+              <p class="text-sm text-slate-400">Today in AI dev culture</p>
+              <p class="mt-3 text-2xl font-black">Claude forgot the context, Cursor guessed the architecture, and the deploy still passed locally.</p>
+            </div>
+            <div class="grid gap-3 sm:grid-cols-2">
+              <div class="rounded-lg bg-violet-600/20 p-4 text-sm text-violet-100">Prompt chaos</div>
+              <div class="rounded-lg bg-cyan-500/15 p-4 text-sm text-cyan-100">Merge queue jokes</div>
+              <div class="rounded-lg bg-emerald-500/15 p-4 text-sm text-emerald-100">Agent loops</div>
+              <div class="rounded-lg bg-amber-500/15 p-4 text-sm text-amber-100">Production nerves</div>
+            </div>
+          </div>
         </div>
       </section>
 
-      <section class="browse-section" id="browse" aria-labelledby="browse-title">
-        <div class="section-inner">
-          <div class="section-heading">
+      <section class="mf-shell pb-14">
+        <div class="ad-placeholder">Advertisement Placeholder</div>
+      </section>
+
+      <section class="border-y border-white/10 bg-white/[0.02] py-16" x-data="memeFeed()" x-cloak>
+        <div class="mf-shell">
+          <div class="grid gap-6 lg:grid-cols-[1fr_340px] lg:items-end">
             <div>
-              <p class="eyebrow">Fresh picks</p>
-              <h2 id="browse-title">Browse the feed</h2>
+              <p class="mb-3 text-sm font-bold uppercase text-cyan-300">Embed database</p>
+              <h2 class="text-3xl font-black md:text-5xl">Claude and vibe coding posts ready to paste.</h2>
+              <p class="mt-4 max-w-2xl text-slate-300">
+                Pulled from Reddit, Hacker News, and X when credentials are configured. Each card keeps the source link and a copyable embed snippet.
+              </p>
             </div>
-            <p>
-              Filter the first collection by topic. These cards are ready to replace with real posts as the archive grows.
-            </p>
+            <div class="rounded-lg border border-white/10 bg-black/20 p-4 text-sm text-slate-300">
+              <p class="font-bold text-white">Database status</p>
+              <p class="mt-2">Updated: <span x-text="generatedLabel"></span></p>
+              <p class="mt-1">Records: <span x-text="memes.length"></span></p>
+            </div>
           </div>
 
-          <div class="toolbar" aria-label="Browse controls">
-            <div class="segment-control" id="categoryFilters" aria-label="Filter by category"></div>
-            <label class="feed-search">
-              <span class="sr-only">Filter visible cards</span>
-              <input id="feedSearch" type="search" placeholder="Filter cards">
+          <div class="mt-8 flex flex-col gap-3 md:flex-row md:items-center md:justify-between">
+            <div class="flex flex-wrap gap-2" aria-label="Filter embeds by category">
+              <template x-for="category in categories" :key="category">
+                <button
+                  type="button"
+                  class="rounded-lg border px-3 py-2 text-sm font-bold"
+                  :class="activeCategory === category ? 'border-cyan-300 bg-cyan-300/15 text-white' : 'border-white/10 bg-white/[0.04] text-slate-300'"
+                  :aria-pressed="activeCategory === category"
+                  @click="activeCategory = category"
+                  x-text="category"
+                ></button>
+              </template>
+            </div>
+            <label class="block w-full rounded-lg border border-white/10 bg-black/20 px-3 py-2 md:w-72">
+              <span class="sr-only">Search embed database</span>
+              <input class="w-full bg-transparent text-sm text-white outline-none placeholder:text-slate-500" type="search" placeholder="Search source, title, tag" x-model.debounce.120ms="search">
             </label>
           </div>
 
-          <div class="meme-grid" id="memeGrid" aria-live="polite"></div>
-          <p class="empty-state" id="emptyState" hidden>No matches yet. Try a broader search.</p>
+          <div class="mt-8 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
+            <template x-for="meme in visibleMemes" :key="meme.id">
+              <article class="overflow-hidden rounded-lg border border-white/10 bg-[#111827]">
+                <div class="flex min-h-[96px] items-start justify-between gap-4 p-4 text-slate-950" :style="{ background: meme.color }">
+                  <div class="flex flex-wrap gap-2">
+                    <span class="rounded-lg bg-white/80 px-2.5 py-1.5 text-xs font-black" x-text="meme.category"></span>
+                    <span class="rounded-lg bg-slate-950/10 px-2.5 py-1.5 text-xs font-black" x-text="meme.source"></span>
+                  </div>
+                  <span class="font-mono text-xs text-slate-800" x-text="'score ' + meme.signal"></span>
+                </div>
+                <div class="grid gap-3 p-5">
+                  <h3 class="text-lg font-black" x-text="meme.title"></h3>
+                  <p class="text-sm leading-6 text-slate-300" x-text="meme.summary"></p>
+                  <div class="flex flex-wrap gap-2">
+                    <template x-for="tag in meme.tags" :key="`${meme.id}-${tag}`">
+                      <span class="rounded-lg bg-white/[0.06] px-2.5 py-1 text-xs font-bold text-slate-200" x-text="tag"></span>
+                    </template>
+                  </div>
+                  <div class="flex flex-wrap gap-2 pt-1">
+                    <a class="rounded-lg border border-white/10 bg-white/[0.04] px-3 py-2 text-sm font-bold hover:border-cyan-300" x-show="meme.url" :href="meme.url" target="_blank" rel="noopener noreferrer">Open</a>
+                    <button class="rounded-lg border border-white/10 bg-white/[0.04] px-3 py-2 text-sm font-bold hover:border-cyan-300" type="button" x-show="meme.embedHtml" @click="copyEmbed(meme)" x-text="copiedId === meme.id ? 'Copied' : 'Embed'"></button>
+                  </div>
+                </div>
+              </article>
+            </template>
+          </div>
+
+          <p class="mt-6 text-sm text-slate-400" x-show="visibleMemes.length === 0">No matching embeds yet.</p>
         </div>
       </section>
 
-      <section class="collections-section" id="collections" aria-labelledby="collections-title">
-        <div class="section-inner">
-          <div class="section-heading">
-            <div>
-              <p class="eyebrow">Collections</p>
-              <h2 id="collections-title">Built for fast scanning</h2>
-            </div>
-            <p>
-              Use these buckets for future landing pages, newsletters, or social posts once MemeFocus starts publishing daily.
-            </p>
+      <section class="border-y border-white/10 bg-white/[0.03] py-16">
+        <div class="mf-shell">
+          <div class="max-w-2xl">
+            <p class="mb-3 text-sm font-bold uppercase text-violet-300">Browse by topic</p>
+            <h2 class="text-3xl font-black md:text-5xl">Start with the meme cluster that matches your current debugging mood.</h2>
           </div>
+          <div class="mt-10 grid gap-5 md:grid-cols-2 lg:grid-cols-4">
+            <a class="mf-card p-6" href="memes/claude/">
+              <h3 class="text-xl font-black">Claude Memes</h3>
+              <p class="mt-3 text-sm leading-6 text-slate-300">Context windows, careful refusals, surprisingly helpful drafts, and the strange calm of model-assisted work.</p>
+            </a>
+            <a class="mf-card p-6" href="memes/claude-code/">
+              <h3 class="text-xl font-black">Claude Code Memes</h3>
+              <p class="mt-3 text-sm leading-6 text-slate-300">Terminal sessions, patch reviews, mysterious file edits, and the joy of watching an agent find the obvious bug.</p>
+            </a>
+            <a class="mf-card p-6" href="memes/vibe-coding/">
+              <h3 class="text-xl font-black">Vibe Coding Memes</h3>
+              <p class="mt-3 text-sm leading-6 text-slate-300">Shipping by instinct, prompting through uncertainty, and the new art of feeling your way through software.</p>
+            </a>
+            <a class="mf-card p-6" href="memes/ai-coding/">
+              <h3 class="text-xl font-black">AI Coding Memes</h3>
+              <p class="mt-3 text-sm leading-6 text-slate-300">Autocomplete confidence, generated tests, and the weekly reminder that software still has edge cases.</p>
+            </a>
+          </div>
+        </div>
+      </section>
 
-          <div class="collection-grid">
-            <article class="collection-item">
-              <span class="collection-code">AI</span>
-              <h3>Model Moments</h3>
-              <p>Prompt rituals, hallucination jokes, evaluation pain, and agent workflow observations.</p>
-            </article>
-            <article class="collection-item">
-              <span class="collection-code">DEV</span>
-              <h3>Build Breaks</h3>
-              <p>Pull requests, local environments, deployments, and the classic one-line fix.</p>
-            </article>
-            <article class="collection-item">
-              <span class="collection-code">OPS</span>
-              <h3>Ship Room</h3>
-              <p>Product decisions, launch nerves, monitoring dashboards, and team-process humor.</p>
-            </article>
+      <section class="mf-shell py-16">
+        <div class="max-w-2xl">
+          <p class="mb-3 text-sm font-bold uppercase text-violet-300">Why MemeFocus</p>
+          <h2 class="text-3xl font-black md:text-5xl">Small, fast, and built for developers.</h2>
+        </div>
+        <div class="mt-10 grid gap-5 md:grid-cols-3">
+          <div class="mf-card p-6">
+            <h3 class="text-xl font-black">Curated</h3>
+            <p class="mt-3 text-slate-300">Only the funniest AI memes.</p>
+          </div>
+          <div class="mf-card p-6">
+            <h3 class="text-xl font-black">Fast</h3>
+            <p class="mt-3 text-slate-300">No endless scrolling.</p>
+          </div>
+          <div class="mf-card p-6">
+            <h3 class="text-xl font-black">Developer-first</h3>
+            <p class="mt-3 text-slate-300">Built for programmers.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="mf-shell pb-20">
+        <div class="newsletter-placeholder p-8">
+          <div>
+            <p class="text-sm font-bold uppercase text-violet-300">Coming Soon</p>
+            <h2 class="mt-3 text-3xl font-black">Weekly AI Meme Digest</h2>
+            <p class="mt-3 text-slate-300">Subscribe for Weekly AI Memes</p>
           </div>
         </div>
       </section>
     </main>
 
-    <footer class="site-footer">
-      <span>MemeFocus</span>
-      <a href="https://github.com/onion0835/memefocus">GitHub</a>
-      <span>memefocus.com</span>
+    <footer class="border-t border-white/10 py-8">
+      <div class="mf-shell flex flex-wrap items-center justify-between gap-4 text-sm text-slate-400">
+        <p>MemeFocus - The Curated Hub for AI & Developer Memes</p>
+        <nav class="flex flex-wrap gap-4" aria-label="Footer navigation">
+          <a class="hover:text-white" href="about.html">About</a>
+          <a class="hover:text-white" href="contact.html">Contact</a>
+          <a class="hover:text-white" href="privacy.html">Privacy</a>
+        </nav>
+      </div>
     </footer>
-
-    <script src="script.js" defer></script>
   </body>
 </html>

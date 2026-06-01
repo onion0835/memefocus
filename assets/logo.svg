@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 64" role="img" aria-labelledby="title desc">
+  <title id="title">MemeFocus</title>
+  <desc id="desc">MemeFocus wordmark</desc>
+  <rect width="240" height="64" rx="14" fill="#0b0f19"/>
+  <rect x="8" y="8" width="48" height="48" rx="12" fill="#7c3aed"/>
+  <path d="M21 42V22h5l6 9 6-9h5v20h-6V31l-5 7h-1l-5-7v11h-5Z" fill="#fff"/>
+  <path d="M75 42V22h15v5h-9v4h8v5h-8v6h-6Zm22 0V22h6v15h9v5H97Zm23 0 8-20h6l8 20h-6l-1-3h-8l-1 3h-6Zm9-8h5l-2-6-3 6Zm21 8V22h6v20h-6Zm15 0V22h7l8 11V22h6v20h-6l-9-12v12h-6Zm31 0V22h16v5h-10v3h9v5h-9v2h10v5h-16Z" fill="#fff"/>
+  <circle cx="221" cy="20" r="4" fill="#a78bfa"/>
+  <circle cx="221" cy="32" r="4" fill="#7c3aed"/>
+  <circle cx="221" cy="44" r="4" fill="#c4b5fd"/>
+</svg>
