@@ -13,8 +13,6 @@
     <meta property="og:image" content="https://memefocus.com/assets/logo.svg">
     <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
     <script src="https://cdn.tailwindcss.com"></script>
-    <script defer src="data/embed-database.js"></script>
-    <script defer src="assets/feed.js"></script>
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
     <link rel="stylesheet" href="assets/styles.css">
     <script type="application/ld+json">
@@ -97,72 +95,50 @@
         <div class="ad-placeholder">Advertisement Placeholder</div>
       </section>
 
-      <section class="border-y border-white/10 bg-white/[0.02] py-16" x-data="memeFeed()" x-cloak>
+      <!-- DATA_FEED_START -->
+      <section class="border-y border-white/10 bg-white/[0.03] py-16">
         <div class="mf-shell">
-          <div class="grid gap-6 lg:grid-cols-[1fr_340px] lg:items-end">
+          <div class="grid gap-6 lg:grid-cols-[1fr_280px] lg:items-end">
             <div>
-              <p class="mb-3 text-sm font-bold uppercase text-cyan-300">Embed database</p>
-              <h2 class="text-3xl font-black md:text-5xl">Claude and vibe coding posts ready to paste.</h2>
-              <p class="mt-4 max-w-2xl text-slate-300">
-                Pulled from Reddit, Hacker News, and X when credentials are configured. Each card keeps the source link and a copyable embed snippet.
-              </p>
+              <p class="mb-3 text-sm font-bold uppercase text-violet-300">Latest Curated Finds</p>
+              <h2 class="text-3xl font-black md:text-5xl">Fresh AI meme sources from the data feed.</h2>
+              <p class="mt-4 max-w-2xl text-slate-300">Generated Jun 1, 2026 from 8 scraped items across Reddit and Hacker News.</p>
             </div>
             <div class="rounded-lg border border-white/10 bg-black/20 p-4 text-sm text-slate-300">
-              <p class="font-bold text-white">Database status</p>
-              <p class="mt-2">Updated: <span x-text="generatedLabel"></span></p>
-              <p class="mt-1">Records: <span x-text="memes.length"></span></p>
+              <p class="font-bold text-white">Data snapshot</p>
+              <p class="mt-2">Reddit: 6</p>
+              <p>Hacker News: 2</p>
             </div>
           </div>
-
-          <div class="mt-8 flex flex-col gap-3 md:flex-row md:items-center md:justify-between">
-            <div class="flex flex-wrap gap-2" aria-label="Filter embeds by category">
-              <template x-for="category in categories" :key="category">
-                <button
-                  type="button"
-                  class="rounded-lg border px-3 py-2 text-sm font-bold"
-                  :class="activeCategory === category ? 'border-cyan-300 bg-cyan-300/15 text-white' : 'border-white/10 bg-white/[0.04] text-slate-300'"
-                  :aria-pressed="activeCategory === category"
-                  @click="activeCategory = category"
-                  x-text="category"
-                ></button>
-              </template>
-            </div>
-            <label class="block w-full rounded-lg border border-white/10 bg-black/20 px-3 py-2 md:w-72">
-              <span class="sr-only">Search embed database</span>
-              <input class="w-full bg-transparent text-sm text-white outline-none placeholder:text-slate-500" type="search" placeholder="Search source, title, tag" x-model.debounce.120ms="search">
-            </label>
-          </div>
-
-          <div class="mt-8 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
-            <template x-for="meme in visibleMemes" :key="meme.id">
-              <article class="overflow-hidden rounded-lg border border-white/10 bg-[#111827]">
-                <div class="flex min-h-[96px] items-start justify-between gap-4 p-4 text-slate-950" :style="{ background: meme.color }">
-                  <div class="flex flex-wrap gap-2">
-                    <span class="rounded-lg bg-white/80 px-2.5 py-1.5 text-xs font-black" x-text="meme.category"></span>
-                    <span class="rounded-lg bg-slate-950/10 px-2.5 py-1.5 text-xs font-black" x-text="meme.source"></span>
-                  </div>
-                  <span class="font-mono text-xs text-slate-800" x-text="'score ' + meme.signal"></span>
-                </div>
-                <div class="grid gap-3 p-5">
-                  <h3 class="text-lg font-black" x-text="meme.title"></h3>
-                  <p class="text-sm leading-6 text-slate-300" x-text="meme.summary"></p>
-                  <div class="flex flex-wrap gap-2">
-                    <template x-for="tag in meme.tags" :key="`${meme.id}-${tag}`">
-                      <span class="rounded-lg bg-white/[0.06] px-2.5 py-1 text-xs font-bold text-slate-200" x-text="tag"></span>
-                    </template>
-                  </div>
-                  <div class="flex flex-wrap gap-2 pt-1">
-                    <a class="rounded-lg border border-white/10 bg-white/[0.04] px-3 py-2 text-sm font-bold hover:border-cyan-300" x-show="meme.url" :href="meme.url" target="_blank" rel="noopener noreferrer">Open</a>
-                    <button class="rounded-lg border border-white/10 bg-white/[0.04] px-3 py-2 text-sm font-bold hover:border-cyan-300" type="button" x-show="meme.embedHtml" @click="copyEmbed(meme)" x-text="copiedId === meme.id ? 'Copied' : 'Embed'"></button>
-                  </div>
-                </div>
-              </article>
-            </template>
-          </div>
-
-          <p class="mt-6 text-sm text-slate-400" x-show="visibleMemes.length === 0">No matching embeds yet.</p>
+          <div class="mt-10 grid gap-5 md:grid-cols-2 lg:grid-cols-3"><a class="mf-card p-5" href="https://www.reddit.com/r/ClaudeAI/comments/1tqx7p4/claude_opus_48_update_broke_my_claude_code_setup" target="_blank" rel="noopener noreferrer">
+              <div class="mb-3 flex flex-wrap gap-2"><span class="data-pill">Reddit</span><span class="data-pill">quality 9</span></div>
+              <h3 class="text-lg font-black">Claude Opus 4.8 update broke my Claude Code setup</h3>
+              <p class="mt-3 text-sm leading-6 text-slate-300">update-day breakage is one of the most reliable formats in AI developer humor.</p>
+            </a><a class="mf-card p-5" href="https://apps.apple.com/us/app/sieve-secret-scanner/id6767409365" target="_blank" rel="noopener noreferrer">
+              <div class="mb-3 flex flex-wrap gap-2"><span class="data-pill">Hacker News</span><span class="data-pill">quality 8</span></div>
+              <h3 class="text-lg font-black">Sieve – scans Cursor/Claude chat history for leaked API keys</h3>
+              <p class="mt-3 text-sm leading-6 text-slate-300">security-flavored AI coding anxiety, especially relevant for anyone pasting secrets into assistants.</p>
+            </a><a class="mf-card p-5" href="https://www.reddit.com/r/ClaudeCode/comments/1tq5odl/i_actually_built_the_vibe_coding_keyboard_its_not" target="_blank" rel="noopener noreferrer">
+              <div class="mb-3 flex flex-wrap gap-2"><span class="data-pill">Reddit</span><span class="data-pill">quality 7</span></div>
+              <h3 class="text-lg font-black">I actually built the vibe coding keyboard. It's not a meme.</h3>
+              <p class="mt-3 text-sm leading-6 text-slate-300">the joke became hardware, which makes it a strong vibe-coding artifact rather than a simple one-off post.</p>
+            </a><a class="mf-card p-5" href="https://www.reddit.com/r/ClaudeAI/comments/1trybqv/am_i_vibe_coding_wrong" target="_blank" rel="noopener noreferrer">
+              <div class="mb-3 flex flex-wrap gap-2"><span class="data-pill">Reddit</span><span class="data-pill">quality 7</span></div>
+              <h3 class="text-lg font-black">Am I vibe coding wrong?</h3>
+              <p class="mt-3 text-sm leading-6 text-slate-300">a useful workflow-confession thread for the question every AI-assisted developer eventually asks.</p>
+            </a><a class="mf-card p-5" href="https://www.reddit.com/r/ClaudeAI/comments/1tpvtc0/claude_codes_macos_install_creates_a_permission" target="_blank" rel="noopener noreferrer">
+              <div class="mb-3 flex flex-wrap gap-2"><span class="data-pill">Reddit</span><span class="data-pill">quality 7</span></div>
+              <h3 class="text-lg font-black">Claude Code's macOS install creates a permission prompt that's indistinguishable from malware UX. Easy fix on Anthropic's side</h3>
+              <p class="mt-3 text-sm leading-6 text-slate-300">good developer-culture material around trust, install UX, and the moment automation starts to feel suspicious.</p>
+            </a><a class="mf-card p-5" href="https://www.reddit.com/r/ClaudeAI/comments/1tqrzv0/anthropics_claude_will_soon_be_vibecoding_human" target="_blank" rel="noopener noreferrer">
+              <div class="mb-3 flex flex-wrap gap-2"><span class="data-pill">Reddit</span><span class="data-pill">quality 7</span></div>
+              <h3 class="text-lg font-black">Anthropic's Claude will soon be vibecoding human DNA</h3>
+              <p class="mt-3 text-sm leading-6 text-slate-300">absurd AI-context humor that pushes vibe coding into science-fiction territory.</p>
+            </a></div>
         </div>
       </section>
+      <!-- DATA_FEED_END -->
+
 
       <section class="border-y border-white/10 bg-white/[0.03] py-16">
         <div class="mf-shell">

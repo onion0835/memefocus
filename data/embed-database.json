@@ -1,0 +1,269 @@
+{
+  "schemaVersion": 3,
+  "generatedAt": "2026-06-01T08:26:31Z",
+  "windowDays": 14,
+  "strictMemes": true,
+  "minQuality": 3,
+  "query": {
+    "keywords": [
+      "claude",
+      "anthropic",
+      "claude code",
+      "vibe coding",
+      "vibecoding"
+    ],
+    "redditSubreddits": [
+      "ClaudeCode",
+      "ClaudeAI",
+      "Anthropic",
+      "singularity",
+      "LocalLLaMA",
+      "ChatGPTCoding",
+      "programming",
+      "ProgrammerHumor"
+    ],
+    "hnTags": [],
+    "xQuery": "(claude OR anthropic OR \"claude code\" OR \"vibe coding\" OR vibecoding) (meme OR funny OR joke OR vibe OR cooked OR shipped OR lol) lang:en -is:retweet"
+  },
+  "embedScripts": {
+    "reddit": "https://embed.reddit.com/widgets.js",
+    "x": "https://platform.twitter.com/widgets.js"
+  },
+  "count": 8,
+  "sourceCounts": {
+    "reddit": 6,
+    "hackernews": 2
+  },
+  "items": [
+    {
+      "id": "reddit-https-www-reddit-com-r-claudeai-comments-1tqx7p4-claude-opus-48-update-broke-my-",
+      "source": "reddit",
+      "title": "Claude Opus 4.8 update broke my Claude Code setup",
+      "url": "https://www.reddit.com/r/ClaudeAI/comments/1tqx7p4/claude_opus_48_update_broke_my_claude_code_setup",
+      "embed": {
+        "url": "https://embed.reddit.com?url=https%3A%2F%2Fwww.reddit.com%2Fr%2FClaudeAI%2Fcomments%2F1tqx7p4%2Fclaude_opus_48_update_broke_my_claude_code_setup",
+        "html": "<blockquote class=\"reddit-embed-bq\"><a href=\"https://www.reddit.com/r/ClaudeAI/comments/1tqx7p4/claude_opus_48_update_broke_my_claude_code_setup\">Claude Opus 4.8 update broke my Claude Code setup</a></blockquote>"
+      },
+      "author": "/u/CatGPT42",
+      "score": 180.66,
+      "qualityScore": 9,
+      "createdAt": "2026-05-29T10:07:34Z",
+      "matchedKeywords": [
+        "claude",
+        "anthropic",
+        "claude code"
+      ],
+      "memeSignals": [
+        "agent-failure",
+        "broke",
+        "context:claude-code",
+        "context:prompt",
+        "context:wrapper",
+        "funny"
+      ],
+      "text": "I ran into this today and saw a bunch of people hitting the same thing, so posting it here in case it saves someone some time. After updating Claude Code to v2.1.154, some third-party models using OpenAI-compatible APIs started failing. The error looks something like: API Error: 400 Failed to deserialize the JSON body messages[1].role: unknown variant `system`, expected `user` or `assistant` At first people thought maybe Claude Code was trying to block third-party providers or something. I don’t",
+      "metrics": {
+        "score": 0,
+        "comments": 0
+      }
+    },
+    {
+      "id": "reddit-https-www-reddit-com-r-claudecode-comments-1tq5odl-i-actually-built-the-vibe-cod",
+      "source": "reddit",
+      "title": "I actually built the vibe coding keyboard. It's not a meme.",
+      "url": "https://www.reddit.com/r/ClaudeCode/comments/1tq5odl/i_actually_built_the_vibe_coding_keyboard_its_not",
+      "embed": {
+        "url": "https://embed.reddit.com?url=https%3A%2F%2Fwww.reddit.com%2Fr%2FClaudeCode%2Fcomments%2F1tq5odl%2Fi_actually_built_the_vibe_coding_keyboard_its_not",
+        "html": "<blockquote class=\"reddit-embed-bq\"><a href=\"https://www.reddit.com/r/ClaudeCode/comments/1tq5odl/i_actually_built_the_vibe_coding_keyboard_its_not\">I actually built the vibe coding keyboard. It&#x27;s not a meme.</a></blockquote>"
+      },
+      "author": "/u/Melinda_McCartney",
+      "score": 133.02,
+      "qualityScore": 7,
+      "createdAt": "2026-05-28T14:42:53Z",
+      "matchedKeywords": [
+        "claude",
+        "claude code",
+        "vibe coding"
+      ],
+      "memeSignals": [
+        "context:agent",
+        "context:claude-code",
+        "context:vibe",
+        "meme",
+        "topic:vibe-coding"
+      ],
+      "text": "Everyone's seen the meme. \"Vibe Coder needs this in 2026\" But I built it (VibeKeys). 50 days. 3 prototypes. Real hardware. What it does: Accept / reject / retry Claude Code suggestions with one click Rotary knob to scroll through generated code Voice input — talk to your agent instead of typing LED screen shows Claude Code status in real time Wireless (BT 5.0 + WiFi) The meta part: Claude Code helped build its own remote control. What would you map the keys to? submitted by /u/Melinda_McCartney ",
+      "metrics": {
+        "score": 0,
+        "comments": 0
+      }
+    },
+    {
+      "id": "reddit-https-www-reddit-com-r-claudeai-comments-1trybqv-am-i-vibe-coding-wrong",
+      "source": "reddit",
+      "title": "Am I vibe coding wrong?",
+      "url": "https://www.reddit.com/r/ClaudeAI/comments/1trybqv/am_i_vibe_coding_wrong",
+      "embed": {
+        "url": "https://embed.reddit.com?url=https%3A%2F%2Fwww.reddit.com%2Fr%2FClaudeAI%2Fcomments%2F1trybqv%2Fam_i_vibe_coding_wrong",
+        "html": "<blockquote class=\"reddit-embed-bq\"><a href=\"https://www.reddit.com/r/ClaudeAI/comments/1trybqv/am_i_vibe_coding_wrong\">Am I vibe coding wrong?</a></blockquote>"
+      },
+      "author": "/u/zeboy",
+      "score": 132.66,
+      "qualityScore": 7,
+      "createdAt": "2026-05-30T12:14:13Z",
+      "matchedKeywords": [
+        "claude",
+        "claude code",
+        "vibe coding"
+      ],
+      "memeSignals": [
+        "context:claude-code",
+        "context:prompt",
+        "context:vibe",
+        "reaction-title",
+        "topic:vibe-coding"
+      ],
+      "text": "I have been building a self-hosted personal task manager (React + FastAPI + Postgres) and I've settled into a workflow that I think is pretty solid. Curious if others are doing something similar or if I'm missing something obvious. I use a **Claude Project** with all my stack context, design decisions, and feature history baked in. Every conversation picks up where I left off, no re-explaining anything. Before any feature gets built I challenge it in the project first. Stress-test the design, po",
+      "metrics": {
+        "score": 0,
+        "comments": 0
+      }
+    },
+    {
+      "id": "reddit-https-www-reddit-com-r-claudeai-comments-1tpvtc0-claude-codes-macos-install-crea",
+      "source": "reddit",
+      "title": "Claude Code's macOS install creates a permission prompt that's indistinguishable from malware UX. Easy fix on Anthropic's side",
+      "url": "https://www.reddit.com/r/ClaudeAI/comments/1tpvtc0/claude_codes_macos_install_creates_a_permission",
+      "embed": {
+        "url": "https://embed.reddit.com?url=https%3A%2F%2Fwww.reddit.com%2Fr%2FClaudeAI%2Fcomments%2F1tpvtc0%2Fclaude_codes_macos_install_creates_a_permission",
+        "html": "<blockquote class=\"reddit-embed-bq\"><a href=\"https://www.reddit.com/r/ClaudeAI/comments/1tpvtc0/claude_codes_macos_install_creates_a_permission\">Claude Code&#x27;s macOS install creates a permission prompt that&#x27;s indistinguishable from malware UX. Easy fix on Anthropic&#x27;s side</a></blockquote>"
+      },
+      "author": "/u/nikanorovalbert",
+      "score": 132.42,
+      "qualityScore": 7,
+      "createdAt": "2026-05-28T06:56:02Z",
+      "matchedKeywords": [
+        "claude",
+        "anthropic",
+        "claude code"
+      ],
+      "memeSignals": [
+        "context:claude-code",
+        "context:prompt",
+        "malware ux"
+      ],
+      "text": "I genuinely almost slammed Cmd-Q and ran a malware scan when this popped up. Lowercase claude binary, generic hand icon, no developer attribution, asking for cross-app data access. Turns out it's legit. It's the CLI hitting macOS TCC. But the reason it looks like this is straight up bad packaging. Please, set a proper bundle identifier so TCC can group it under \"Claude Code by Anthropic, Inc.\" Use the brand icon everywhere so it visually matches Claude.app. u/anthropic if you're around - please ",
+      "metrics": {
+        "score": 0,
+        "comments": 0
+      }
+    },
+    {
+      "id": "reddit-https-www-reddit-com-r-claudeai-comments-1tqrzv0-anthropics-claude-will-soon-be-",
+      "source": "reddit",
+      "title": "Anthropic's Claude will soon be vibecoding human DNA",
+      "url": "https://www.reddit.com/r/ClaudeAI/comments/1tqrzv0/anthropics_claude_will_soon_be_vibecoding_human",
+      "embed": {
+        "url": "https://embed.reddit.com?url=https%3A%2F%2Fwww.reddit.com%2Fr%2FClaudeAI%2Fcomments%2F1tqrzv0%2Fanthropics_claude_will_soon_be_vibecoding_human",
+        "html": "<blockquote class=\"reddit-embed-bq\"><a href=\"https://www.reddit.com/r/ClaudeAI/comments/1tqrzv0/anthropics_claude_will_soon_be_vibecoding_human\">Anthropic&#x27;s Claude will soon be vibecoding human DNA</a></blockquote>"
+      },
+      "author": "/u/EchoOfOppenheimer",
+      "score": 130.33,
+      "qualityScore": 7,
+      "createdAt": "2026-05-29T05:24:14Z",
+      "matchedKeywords": [
+        "claude",
+        "anthropic",
+        "vibecoding"
+      ],
+      "memeSignals": [
+        "absurd-ai-context",
+        "topic:vibecoding"
+      ],
+      "text": "submitted by /u/EchoOfOppenheimer [link] [comments]",
+      "metrics": {
+        "score": 0,
+        "comments": 0
+      }
+    },
+    {
+      "id": "reddit-https-www-reddit-com-r-claudecode-comments-1ts0wuh-claude-code-dynamic-workflows",
+      "source": "reddit",
+      "title": "Claude code dynamic workflows is insane!",
+      "url": "https://www.reddit.com/r/ClaudeCode/comments/1ts0wuh/claude_code_dynamic_workflows_is_insane",
+      "embed": {
+        "url": "https://embed.reddit.com?url=https%3A%2F%2Fwww.reddit.com%2Fr%2FClaudeCode%2Fcomments%2F1ts0wuh%2Fclaude_code_dynamic_workflows_is_insane",
+        "html": "<blockquote class=\"reddit-embed-bq\"><a href=\"https://www.reddit.com/r/ClaudeCode/comments/1ts0wuh/claude_code_dynamic_workflows_is_insane\">Claude code dynamic workflows is insane!</a></blockquote>"
+      },
+      "author": "/u/helios_csgo",
+      "score": 126.94,
+      "qualityScore": 7,
+      "createdAt": "2026-05-30T14:06:19Z",
+      "matchedKeywords": [
+        "claude",
+        "claude code"
+      ],
+      "memeSignals": [
+        "context:agents",
+        "context:claude-code",
+        "insane"
+      ],
+      "text": "Asked claude code to verify features in a moderately large codebase. The capability is insane, so is the token usage. dynamic workflows spawning agents token usage on deepseek submitted by /u/helios_csgo [link] [comments]",
+      "metrics": {
+        "score": 0,
+        "comments": 0
+      }
+    },
+    {
+      "id": "hackernews-48188727",
+      "source": "hackernews",
+      "title": "Sieve – scans Cursor/Claude chat history for leaked API keys",
+      "url": "https://apps.apple.com/us/app/sieve-secret-scanner/id6767409365",
+      "embed": {
+        "url": "https://news.ycombinator.com/item?id=48188727",
+        "html": "<a class=\"meme-embed meme-embed--hn\" href=\"https://news.ycombinator.com/item?id=48188727\" target=\"_blank\" rel=\"noopener\"><strong>Sieve – scans Cursor/Claude chat history for leaked API keys</strong><span>Hacker News by helpful_human</span></a>"
+      },
+      "author": "helpful_human",
+      "score": 115.6,
+      "qualityScore": 8,
+      "createdAt": "2026-05-19T03:06:45Z",
+      "matchedKeywords": [
+        "claude"
+      ],
+      "memeSignals": [
+        "claude-code-drama",
+        "leaked"
+      ],
+      "text": "",
+      "metrics": {
+        "points": 18.0,
+        "comments": 3.0
+      }
+    },
+    {
+      "id": "hackernews-48316636",
+      "source": "hackernews",
+      "title": "Ask HN: Is Claude Opus 4.8 broken?",
+      "url": "https://news.ycombinator.com/item",
+      "embed": {
+        "url": "https://news.ycombinator.com/item?id=48316636",
+        "html": "<a class=\"meme-embed meme-embed--hn\" href=\"https://news.ycombinator.com/item?id=48316636\" target=\"_blank\" rel=\"noopener\"><strong>Ask HN: Is Claude Opus 4.8 broken?</strong><span>Hacker News by pqdbr</span></a>"
+      },
+      "author": "pqdbr",
+      "score": 78.06,
+      "qualityScore": 4,
+      "createdAt": "2026-05-28T22:49:30Z",
+      "matchedKeywords": [
+        "claude"
+      ],
+      "memeSignals": [
+        "broken"
+      ],
+      "text": "",
+      "metrics": {
+        "points": 8.0,
+        "comments": 6.0
+      }
+    }
+  ]
+}
