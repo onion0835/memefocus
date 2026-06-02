@@ -68,92 +68,255 @@
       </div>
     </header>
 
-    <main x-data="memeMaker()" x-init="$nextTick(() => init($refs.canvas))" class="pb-20">
-      <section class="mf-shell py-12 md:py-16">
+    <main x-data="memeMaker()" x-init="$nextTick(() => init($refs.canvas))" class="pb-16">
+      <section class="mf-shell py-8">
         <nav class="breadcrumb text-sm text-slate-400" aria-label="Breadcrumb"><a href="../../index.html">Home</a> / AI Meme Maker</nav>
-        <div class="mt-10 grid gap-10 lg:grid-cols-[minmax(0,1fr)_390px] lg:items-start">
-          <div>
-            <p class="mb-4 text-sm font-bold uppercase text-violet-300">MemeFocus Tool</p>
-            <h1 class="max-w-4xl text-5xl font-black leading-tight md:text-7xl">AI Meme Maker</h1>
-            <p class="mt-6 max-w-2xl text-lg leading-8 text-slate-300">Claude broke the build. Vibes did the rest.</p>
 
-            <div class="mt-8 rounded-lg border border-white/10 bg-black/20 p-3">
-              <canvas x-ref="canvas" data-meme-canvas class="maker-canvas" width="1080" height="1080" aria-label="Meme preview"></canvas>
+        <div class="mt-6 flex flex-wrap items-end justify-between gap-4">
+          <div>
+            <p class="mb-2 text-sm font-bold uppercase text-violet-300">MemeFocus Tool</p>
+            <h1 class="text-4xl font-black leading-tight md:text-6xl">AI Meme Maker</h1>
+          </div>
+          <div class="flex flex-wrap gap-3">
+            <button class="mf-button mf-button-secondary" type="button" @click="resetAll()">Reset</button>
+            <button class="mf-button" type="button" @click="generateMeme()">Generate Meme</button>
+          </div>
+        </div>
+
+        <div class="maker-workbench mt-7">
+          <aside class="maker-panel">
+            <div class="grid gap-5">
+              <section class="grid gap-3">
+                <h2 class="maker-panel-title">Templates</h2>
+                <div class="grid grid-cols-2 gap-2">
+                  <template x-for="item in templateList" :key="item.id">
+                    <button class="maker-chip" type="button" :class="template === item.id ? 'maker-chip-active' : ''" @click="setTemplate(item.id)" x-text="item.name"></button>
+                  </template>
+                </div>
+                <label class="maker-upload">
+                  <input class="sr-only" type="file" accept="image/*" @change="loadTemplateUpload($event)">
+                  <span>Upload Template</span>
+                </label>
+              </section>
+
+              <section class="grid gap-3">
+                <h2 class="maker-panel-title">Create</h2>
+                <button class="maker-tool-button" type="button" @click="addText()">Add Text</button>
+                <label class="maker-tool-button">
+                  <input class="sr-only" type="file" accept="image/*" @change="addSticker($event)">
+                  <span>Add Image</span>
+                </label>
+                <button class="maker-tool-button" type="button" :class="drawMode ? 'maker-tool-button-active' : ''" @click="toggleDrawMode()">Draw</button>
+              </section>
+
+              <section class="grid gap-3">
+                <h2 class="maker-panel-title">Layers</h2>
+                <div class="grid gap-2">
+                  <template x-for="layer in layers" :key="layer.id">
+                    <button class="maker-layer" type="button" :class="selectedId === layer.id ? 'maker-layer-active' : ''" @click="selectLayer(layer.id)">
+                      <span x-text="layer.type === 'text' ? (layer.text || 'Text').slice(0, 28) : 'Image Layer'"></span>
+                      <span x-text="layer.type"></span>
+                    </button>
+                  </template>
+                </div>
+              </section>
+            </div>
+          </aside>
+
+          <section class="maker-stage">
+            <div class="maker-canvas-wrap">
+              <canvas
+                x-ref="canvas"
+                data-meme-canvas
+                class="maker-canvas"
+                width="1080"
+                height="1080"
+                aria-label="Meme preview"
+                @pointerdown="pointerDown($event)"
+                @pointermove="pointerMove($event)"
+                @pointerup="pointerUp()"
+                @pointerleave="pointerUp()"></canvas>
             </div>
 
-            <div class="mt-5 flex flex-wrap gap-3">
-              <button class="mf-button" type="button" @click="downloadPng()">Download PNG</button>
+            <div class="maker-action-bar">
+              <button class="mf-button" type="button" @click="generateMeme()">Generate Meme</button>
+              <button class="mf-button mf-button-secondary" type="button" @click="downloadPng()">Download PNG</button>
               <button class="mf-button mf-button-secondary" type="button" @click="shareImage()">Share Image</button>
               <button class="mf-button mf-button-secondary" type="button" @click="shareToX()">Share to X</button>
               <button class="mf-button mf-button-secondary" type="button" @click="shareToReddit()">Share to Reddit</button>
             </div>
-            <p class="mt-3 min-h-6 text-sm text-slate-400" x-text="status"></p>
-          </div>
 
-          <aside class="mf-card p-5">
+            <p class="min-h-6 text-sm text-slate-400" x-text="status"></p>
+
+            <div class="maker-output" x-show="outputUrl" x-cloak>
+              <div>
+                <p class="maker-panel-title">Generated</p>
+                <img class="mt-3 w-full rounded-lg border border-white/10" :src="outputUrl" alt="Generated MemeFocus meme">
+              </div>
+              <div class="flex flex-wrap gap-3">
+                <button class="mf-button" type="button" @click="downloadPng()">Download PNG</button>
+                <button class="mf-button mf-button-secondary" type="button" @click="shareImage()">Share Image</button>
+              </div>
+            </div>
+          </section>
+
+          <aside class="maker-panel">
             <div class="grid gap-5">
-              <label class="grid gap-2">
-                <span class="control-label">Top Text</span>
-                <textarea class="maker-input min-h-24" x-model="topText" @input="render()" maxlength="140"></textarea>
-              </label>
-
-              <label class="grid gap-2">
-                <span class="control-label">Bottom Text</span>
-                <textarea class="maker-input min-h-24" x-model="bottomText" @input="render()" maxlength="140"></textarea>
-              </label>
-
-              <label class="grid gap-2">
-                <span class="control-label">Template</span>
-                <select class="maker-input" x-model="template" @change="setTemplate(template)">
-                  <option value="claude">Claude Incident</option>
-                  <option value="vibe">Vibe Coding</option>
-                  <option value="deploy">Deploy Preview</option>
-                  <option value="terminal">Terminal Drama</option>
-                </select>
-              </label>
-
-              <label class="grid gap-2">
-                <span class="control-label">Image</span>
-                <input class="maker-input file:mr-3 file:rounded-md file:border-0 file:bg-violet-600 file:px-3 file:py-2 file:text-sm file:font-bold file:text-white" type="file" accept="image/*" @change="loadUpload($event)">
-              </label>
-
-              <div class="grid grid-cols-2 gap-3">
+              <section class="grid gap-3">
+                <h2 class="maker-panel-title">Canvas</h2>
                 <label class="grid gap-2">
                   <span class="control-label">Format</span>
-                  <select class="maker-input" x-model="format" @change="render()">
-                    <option value="square">Square</option>
-                    <option value="portrait">Portrait</option>
-                    <option value="landscape">Landscape</option>
+                  <select class="maker-input" x-model="format" @change="setFormat(format)">
+                    <option value="square">1:1 Square</option>
+                    <option value="fourThree">4:3 Classic</option>
+                    <option value="portrait">2:3 Portrait</option>
+                    <option value="landscape">16:9 Landscape</option>
                   </select>
                 </label>
 
-                <label class="grid gap-2">
-                  <span class="control-label">Text Size</span>
-                  <input class="maker-input" type="range" min="46" max="98" step="2" x-model.number="fontSize" @input="render()">
-                </label>
-              </div>
+                <div class="grid gap-2">
+                  <span class="control-label">Spacing</span>
+                  <div class="grid grid-cols-2 gap-2">
+                    <button class="maker-chip" type="button" :class="spacingMode === 'none' ? 'maker-chip-active' : ''" @click="spacingMode = 'none'; render()">No Spacing</button>
+                    <button class="maker-chip" type="button" :class="spacingMode === 'both' ? 'maker-chip-active' : ''" @click="spacingMode = 'both'; render()">Top & Bottom</button>
+                    <button class="maker-chip" type="button" :class="spacingMode === 'top' ? 'maker-chip-active' : ''" @click="spacingMode = 'top'; render()">Top</button>
+                    <button class="maker-chip" type="button" :class="spacingMode === 'bottom' ? 'maker-chip-active' : ''" @click="spacingMode = 'bottom'; render()">Bottom</button>
+                  </div>
+                </div>
 
-              <div class="grid grid-cols-2 gap-3">
-                <label class="grid gap-2">
-                  <span class="control-label">Text Color</span>
-                  <input class="maker-color" type="color" x-model="textColor" @input="render()">
-                </label>
-                <label class="grid gap-2">
-                  <span class="control-label">Outline</span>
-                  <input class="maker-color" type="color" x-model="outlineColor" @input="render()">
-                </label>
-              </div>
+                <div class="grid grid-cols-2 gap-3">
+                  <label class="grid gap-2">
+                    <span class="control-label">Blank Color</span>
+                    <input class="maker-color" type="color" x-model="backgroundColor" @input="template = 'blank'; render()">
+                  </label>
+                  <label class="grid gap-2">
+                    <span class="control-label">Effect</span>
+                    <select class="maker-input" x-model="imageEffect" @change="render()">
+                      <option value="none">None</option>
+                      <option value="grayscale">Grayscale</option>
+                      <option value="sepia">Sepia</option>
+                      <option value="contrast">Contrast</option>
+                      <option value="blur">Blur</option>
+                    </select>
+                  </label>
+                </div>
+              </section>
 
-              <div class="grid gap-3 rounded-lg border border-white/10 bg-white/[0.03] p-4">
-                <label class="flex items-center justify-between gap-3 text-sm font-bold text-slate-200">
-                  <span>Uppercase</span>
-                  <input class="h-5 w-5 accent-violet-600" type="checkbox" x-model="uppercase" @change="render()">
-                </label>
+              <section class="grid gap-3">
+                <h2 class="maker-panel-title">Draw</h2>
+                <div class="grid grid-cols-2 gap-3">
+                  <label class="grid gap-2">
+                    <span class="control-label">Brush</span>
+                    <input class="maker-color" type="color" x-model="brushColor">
+                  </label>
+                  <label class="grid gap-2">
+                    <span class="control-label">Size</span>
+                    <input class="maker-input" type="range" min="4" max="54" step="2" x-model.number="brushSize">
+                  </label>
+                </div>
+                <button class="maker-tool-button" type="button" @click="clearDrawings()">Clear Drawing</button>
+              </section>
+
+              <template x-if="selectedLayer">
+                <section class="grid gap-3">
+                  <div class="flex items-center justify-between gap-3">
+                    <h2 class="maker-panel-title">Selected</h2>
+                    <div class="flex gap-2">
+                      <button class="maker-mini-button" type="button" @click="moveSelected('down')">Back</button>
+                      <button class="maker-mini-button" type="button" @click="moveSelected('up')">Front</button>
+                    </div>
+                  </div>
+
+                  <template x-if="selectedLayer.type === 'text'">
+                    <div class="grid gap-3">
+                      <label class="grid gap-2">
+                        <span class="control-label">Text</span>
+                        <textarea class="maker-input min-h-24" x-model="selectedLayer.text" @input="render()" maxlength="220"></textarea>
+                      </label>
+
+                      <div class="grid grid-cols-2 gap-3">
+                        <label class="grid gap-2">
+                          <span class="control-label">Font</span>
+                          <select class="maker-input" x-model="selectedLayer.font" @change="render()">
+                            <option value="Impact">Impact</option>
+                            <option value="Arial">Arial</option>
+                            <option value="System">System</option>
+                          </select>
+                        </label>
+                        <label class="grid gap-2">
+                          <span class="control-label">Align</span>
+                          <select class="maker-input" x-model="selectedLayer.align" @change="render()">
+                            <option value="center">Center</option>
+                            <option value="left">Left</option>
+                            <option value="right">Right</option>
+                          </select>
+                        </label>
+                      </div>
+
+                      <div class="grid grid-cols-2 gap-3">
+                        <label class="grid gap-2">
+                          <span class="control-label">Size</span>
+                          <input class="maker-input" type="range" min="28" max="130" step="2" x-model.number="selectedLayer.fontSize" @input="render()">
+                        </label>
+                        <label class="grid gap-2">
+                          <span class="control-label">Box Width</span>
+                          <input class="maker-input" type="range" min="0.2" max="0.96" step="0.02" x-model.number="selectedLayer.width" @input="render()">
+                        </label>
+                      </div>
+
+                      <div class="grid grid-cols-2 gap-3">
+                        <label class="grid gap-2">
+                          <span class="control-label">Text Color</span>
+                          <input class="maker-color" type="color" x-model="selectedLayer.color" @input="render()">
+                        </label>
+                        <label class="grid gap-2">
+                          <span class="control-label">Outline</span>
+                          <input class="maker-color" type="color" x-model="selectedLayer.outlineColor" @input="render()">
+                        </label>
+                      </div>
+
+                      <div class="grid gap-2">
+                        <span class="control-label">Auto Color</span>
+                        <div class="grid grid-cols-3 gap-2">
+                          <button class="maker-chip" type="button" @click="setColorPreset('white')">White</button>
+                          <button class="maker-chip" type="button" @click="setColorPreset('black')">Black</button>
+                          <button class="maker-chip" type="button" @click="setColorPreset('violet')">Violet</button>
+                        </div>
+                      </div>
+
+                      <label class="flex items-center justify-between gap-3 rounded-lg border border-white/10 bg-white/[0.03] p-3 text-sm font-bold text-slate-200">
+                        <span>Uppercase</span>
+                        <input class="h-5 w-5 accent-violet-600" type="checkbox" x-model="selectedLayer.uppercase" @change="render()">
+                      </label>
+                    </div>
+                  </template>
+
+                  <template x-if="selectedLayer.type === 'image'">
+                    <div class="grid gap-3">
+                      <label class="grid gap-2">
+                        <span class="control-label">Size</span>
+                        <input class="maker-input" type="range" min="0.12" max="0.92" step="0.02" x-model.number="selectedLayer.width" @input="resizeSelectedImage()">
+                      </label>
+                      <label class="grid gap-2">
+                        <span class="control-label">Opacity</span>
+                        <input class="maker-input" type="range" min="0.1" max="1" step="0.05" x-model.number="selectedLayer.opacity" @input="render()">
+                      </label>
+                    </div>
+                  </template>
+
+                  <div class="grid grid-cols-2 gap-2">
+                    <button class="maker-tool-button" type="button" @click="duplicateSelected()">Duplicate</button>
+                    <button class="maker-tool-button maker-danger" type="button" @click="removeSelected()">Delete</button>
+                  </div>
+                </section>
+              </template>
+
+              <section class="grid gap-3 rounded-lg border border-white/10 bg-white/[0.03] p-4">
                 <label class="flex items-center justify-between gap-3 text-sm font-bold text-slate-200">
                   <span>Watermark</span>
                   <input class="h-5 w-5 accent-violet-600" type="checkbox" x-model="watermark" @change="render()">
                 </label>
-              </div>
+              </section>
             </div>
           </aside>
         </div>

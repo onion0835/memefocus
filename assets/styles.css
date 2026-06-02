@@ -179,12 +179,159 @@ textarea {
   line-height: 1.6;
 }
 
+.maker-workbench {
+  display: grid;
+  grid-template-columns: 230px minmax(0, 1fr) 330px;
+  gap: 18px;
+  align-items: start;
+}
+
+.maker-panel,
+.maker-stage {
+  border: 1px solid var(--mf-line);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.035);
+}
+
+.maker-panel {
+  padding: 16px;
+}
+
+.maker-stage {
+  padding: 12px;
+}
+
+.maker-panel-title {
+  color: #fff;
+  font-size: 0.82rem;
+  font-weight: 900;
+  letter-spacing: 0;
+  text-transform: uppercase;
+}
+
+.maker-canvas-wrap {
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 8px;
+  background: #050816;
+}
+
 .maker-canvas {
   display: block;
   width: 100%;
   height: auto;
-  border-radius: 8px;
   background: #111827;
+  cursor: grab;
+  touch-action: none;
+}
+
+.maker-canvas:active {
+  cursor: grabbing;
+}
+
+.maker-action-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 14px;
+}
+
+.maker-output {
+  display: grid;
+  gap: 14px;
+  margin-top: 18px;
+  border-top: 1px solid var(--mf-line);
+  padding-top: 18px;
+}
+
+.maker-chip,
+.maker-tool-button,
+.maker-upload,
+.maker-mini-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 40px;
+  border: 1px solid var(--mf-line);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.05);
+  color: #e6e9f5;
+  font-size: 0.86rem;
+  font-weight: 800;
+  text-align: center;
+  cursor: pointer;
+}
+
+.maker-chip:hover,
+.maker-tool-button:hover,
+.maker-upload:hover,
+.maker-mini-button:hover {
+  border-color: rgba(124, 58, 237, 0.8);
+  background: rgba(124, 58, 237, 0.18);
+}
+
+.maker-chip-active,
+.maker-tool-button-active {
+  border-color: rgba(167, 139, 250, 0.95);
+  background: rgba(124, 58, 237, 0.32);
+  color: #fff;
+}
+
+.maker-tool-button,
+.maker-upload {
+  width: 100%;
+  min-height: 44px;
+}
+
+.maker-mini-button {
+  min-height: 32px;
+  padding: 0 10px;
+  font-size: 0.76rem;
+}
+
+.maker-danger {
+  border-color: rgba(248, 113, 113, 0.45);
+  color: #fecaca;
+}
+
+.maker-danger:hover {
+  border-color: rgba(248, 113, 113, 0.9);
+  background: rgba(127, 29, 29, 0.35);
+}
+
+.maker-layer {
+  display: flex;
+  min-height: 42px;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  border: 1px solid var(--mf-line);
+  border-radius: 8px;
+  background: rgba(0, 0, 0, 0.22);
+  color: #d6dbea;
+  padding: 0 10px;
+  font-size: 0.82rem;
+  font-weight: 800;
+  text-align: left;
+}
+
+.maker-layer span:first-child {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.maker-layer span:last-child {
+  color: #9aa4b8;
+  font-size: 0.7rem;
+  text-transform: uppercase;
+}
+
+.maker-layer-active {
+  border-color: rgba(167, 139, 250, 0.95);
+  background: rgba(124, 58, 237, 0.24);
+  color: #fff;
 }
 
 .maker-input {
@@ -279,6 +426,18 @@ textarea {
 @media (max-width: 720px) {
   .mf-shell {
     width: min(100% - 24px, 1120px);
+  }
+
+  .maker-workbench {
+    grid-template-columns: 1fr;
+  }
+
+  .maker-panel {
+    padding: 14px;
+  }
+
+  .maker-action-bar .mf-button {
+    width: 100%;
   }
 
   .meme-placeholder {
