@@ -179,6 +179,48 @@ textarea {
   line-height: 1.6;
 }
 
+.maker-canvas {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  background: #111827;
+}
+
+.maker-input {
+  width: 100%;
+  border: 1px solid var(--mf-line);
+  border-radius: 8px;
+  background: rgba(0, 0, 0, 0.24);
+  color: #fff;
+  outline: 0;
+  padding: 11px 12px;
+}
+
+.maker-input:focus {
+  border-color: rgba(124, 58, 237, 0.92);
+}
+
+.maker-input::placeholder {
+  color: #737c91;
+}
+
+.maker-color {
+  width: 100%;
+  height: 44px;
+  border: 1px solid var(--mf-line);
+  border-radius: 8px;
+  background: rgba(0, 0, 0, 0.24);
+  padding: 5px;
+}
+
+.control-label {
+  color: #d6dbea;
+  font-size: 0.78rem;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
 .newsletter-placeholder {
   min-height: 170px;
 }

@@ -1,0 +1,174 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>AI Meme Maker | Create and Share Developer Memes</title>
+    <meta name="description" content="Create AI and developer meme images in your browser, add custom captions, download PNG files, and share meme posts to X or Reddit fast.">
+    <link rel="canonical" href="https://memefocus.com/tools/meme-maker/">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="AI Meme Maker | Create and Share Developer Memes">
+    <meta property="og:description" content="Create AI and developer meme images in your browser, add custom captions, download PNG files, and share meme posts to X or Reddit fast.">
+    <meta property="og:url" content="https://memefocus.com/tools/meme-maker/">
+    <meta property="og:image" content="https://memefocus.com/assets/logo.svg">
+    <link rel="icon" href="../../assets/favicon.svg" type="image/svg+xml">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script defer src="../../assets/meme-maker.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <link rel="stylesheet" href="../../assets/styles.css">
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "Organization",
+            "@id": "https://memefocus.com/#organization",
+            "name": "MemeFocus",
+            "url": "https://memefocus.com/",
+            "logo": "https://memefocus.com/assets/logo.svg"
+          },
+          {
+            "@type": "WebSite",
+            "@id": "https://memefocus.com/#website",
+            "url": "https://memefocus.com/",
+            "name": "MemeFocus",
+            "publisher": {"@id": "https://memefocus.com/#organization"}
+          },
+          {
+            "@type": "WebApplication",
+            "@id": "https://memefocus.com/tools/meme-maker/#app",
+            "name": "AI Meme Maker",
+            "applicationCategory": "MultimediaApplication",
+            "operatingSystem": "Any",
+            "url": "https://memefocus.com/tools/meme-maker/"
+          },
+          {
+            "@type": "BreadcrumbList",
+            "@id": "https://memefocus.com/tools/meme-maker/#breadcrumb",
+            "itemListElement": [
+              {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://memefocus.com/"},
+              {"@type": "ListItem", "position": 2, "name": "AI Meme Maker", "item": "https://memefocus.com/tools/meme-maker/"}
+            ]
+          }
+        ]
+      }
+    </script>
+  </head>
+  <body class="min-h-screen bg-[#0b0f19] text-white antialiased">
+    <header class="border-b border-white/10">
+      <div class="mf-shell flex flex-wrap items-center justify-between gap-4 py-5">
+        <a href="../../index.html" aria-label="MemeFocus home"><img src="../../assets/logo.svg" width="150" height="40" alt="MemeFocus"></a>
+        <nav class="flex flex-wrap items-center gap-4 text-sm text-slate-300" aria-label="Primary navigation">
+          <a class="hover:text-white" href="../../memes/claude/">Claude</a>
+          <a class="hover:text-white" href="../../memes/claude-code/">Claude Code</a>
+          <a class="hover:text-white" href="../../memes/vibe-coding/">Vibe Coding</a>
+          <a class="hover:text-white" href="../../memes/ai-coding/">AI Coding</a>
+          <a class="text-violet-300 hover:text-white" href="../../tools/meme-maker/">Maker</a>
+        </nav>
+      </div>
+    </header>
+
+    <main x-data="memeMaker()" x-init="$nextTick(() => init($refs.canvas))" class="pb-20">
+      <section class="mf-shell py-12 md:py-16">
+        <nav class="breadcrumb text-sm text-slate-400" aria-label="Breadcrumb"><a href="../../index.html">Home</a> / AI Meme Maker</nav>
+        <div class="mt-10 grid gap-10 lg:grid-cols-[minmax(0,1fr)_390px] lg:items-start">
+          <div>
+            <p class="mb-4 text-sm font-bold uppercase text-violet-300">MemeFocus Tool</p>
+            <h1 class="max-w-4xl text-5xl font-black leading-tight md:text-7xl">AI Meme Maker</h1>
+            <p class="mt-6 max-w-2xl text-lg leading-8 text-slate-300">Claude broke the build. Vibes did the rest.</p>
+
+            <div class="mt-8 rounded-lg border border-white/10 bg-black/20 p-3">
+              <canvas x-ref="canvas" data-meme-canvas class="maker-canvas" width="1080" height="1080" aria-label="Meme preview"></canvas>
+            </div>
+
+            <div class="mt-5 flex flex-wrap gap-3">
+              <button class="mf-button" type="button" @click="downloadPng()">Download PNG</button>
+              <button class="mf-button mf-button-secondary" type="button" @click="shareImage()">Share Image</button>
+              <button class="mf-button mf-button-secondary" type="button" @click="shareToX()">Share to X</button>
+              <button class="mf-button mf-button-secondary" type="button" @click="shareToReddit()">Share to Reddit</button>
+            </div>
+            <p class="mt-3 min-h-6 text-sm text-slate-400" x-text="status"></p>
+          </div>
+
+          <aside class="mf-card p-5">
+            <div class="grid gap-5">
+              <label class="grid gap-2">
+                <span class="control-label">Top Text</span>
+                <textarea class="maker-input min-h-24" x-model="topText" @input="render()" maxlength="140"></textarea>
+              </label>
+
+              <label class="grid gap-2">
+                <span class="control-label">Bottom Text</span>
+                <textarea class="maker-input min-h-24" x-model="bottomText" @input="render()" maxlength="140"></textarea>
+              </label>
+
+              <label class="grid gap-2">
+                <span class="control-label">Template</span>
+                <select class="maker-input" x-model="template" @change="setTemplate(template)">
+                  <option value="claude">Claude Incident</option>
+                  <option value="vibe">Vibe Coding</option>
+                  <option value="deploy">Deploy Preview</option>
+                  <option value="terminal">Terminal Drama</option>
+                </select>
+              </label>
+
+              <label class="grid gap-2">
+                <span class="control-label">Image</span>
+                <input class="maker-input file:mr-3 file:rounded-md file:border-0 file:bg-violet-600 file:px-3 file:py-2 file:text-sm file:font-bold file:text-white" type="file" accept="image/*" @change="loadUpload($event)">
+              </label>
+
+              <div class="grid grid-cols-2 gap-3">
+                <label class="grid gap-2">
+                  <span class="control-label">Format</span>
+                  <select class="maker-input" x-model="format" @change="render()">
+                    <option value="square">Square</option>
+                    <option value="portrait">Portrait</option>
+                    <option value="landscape">Landscape</option>
+                  </select>
+                </label>
+
+                <label class="grid gap-2">
+                  <span class="control-label">Text Size</span>
+                  <input class="maker-input" type="range" min="46" max="98" step="2" x-model.number="fontSize" @input="render()">
+                </label>
+              </div>
+
+              <div class="grid grid-cols-2 gap-3">
+                <label class="grid gap-2">
+                  <span class="control-label">Text Color</span>
+                  <input class="maker-color" type="color" x-model="textColor" @input="render()">
+                </label>
+                <label class="grid gap-2">
+                  <span class="control-label">Outline</span>
+                  <input class="maker-color" type="color" x-model="outlineColor" @input="render()">
+                </label>
+              </div>
+
+              <div class="grid gap-3 rounded-lg border border-white/10 bg-white/[0.03] p-4">
+                <label class="flex items-center justify-between gap-3 text-sm font-bold text-slate-200">
+                  <span>Uppercase</span>
+                  <input class="h-5 w-5 accent-violet-600" type="checkbox" x-model="uppercase" @change="render()">
+                </label>
+                <label class="flex items-center justify-between gap-3 text-sm font-bold text-slate-200">
+                  <span>Watermark</span>
+                  <input class="h-5 w-5 accent-violet-600" type="checkbox" x-model="watermark" @change="render()">
+                </label>
+              </div>
+            </div>
+          </aside>
+        </div>
+      </section>
+
+      <section class="mf-shell">
+        <div class="ad-placeholder">Advertisement Placeholder</div>
+      </section>
+    </main>
+
+    <footer class="border-t border-white/10 py-8">
+      <div class="mf-shell flex flex-wrap justify-between gap-4 text-sm text-slate-400">
+        <p>MemeFocus - memefocus.com</p>
+        <a class="hover:text-white" href="../../privacy.html">Privacy</a>
+      </div>
+    </footer>
+  </body>
+</html>
